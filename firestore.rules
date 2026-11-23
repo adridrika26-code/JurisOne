@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAllowedUser() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in [
+          "adridrika26@gmail.com",
+          "sorianogns@icloud.com"
+        ];
+    }
+    match /agendaEvents/{eventId} {
+      allow read, create, update, delete: if isAllowedUser();
+    }
+  }
+}

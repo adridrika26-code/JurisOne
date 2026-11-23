@@ -1,0 +1,9 @@
+{
+  "name": "Nossa Agenda Online",
+  "short_name": "Nossa Agenda",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f6fb",
+  "theme_color": "#172554",
+  "description": "Agenda compartilhada do escritório"
+}
