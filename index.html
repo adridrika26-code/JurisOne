@@ -1,288 +1,235 @@
-JurisOne — Painel profissional
-Código HTML completo atualizado. Copie o conteúdo para substituir o index.html no GitHub. O PDF pode dividir linhas longas; prefira o arquivo
-HTML para copiar quando conseguir abri-lo.
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#172554">
-<meta name="description" content="JurisOne: gestão jurídica inteligente para escritórios de advocacia.">
-<title>JurisOne | Gestão Jurídica</title>
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" href="./icon.svg" type="image/svg+xml">
-<style>
-:root{
---navy:#101b3d;--navy-2:#172554;--blue:#315efb;--blue-dark:#2448d8;
---bg:#f5f7fc;--line:#e7ebf3;--muted:#718096;--ink:#172033;
---white:#fff;--shadow:0 12px 32px rgba(23,37,84,.07)
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
-button:active{transform:translateY(1px)}
-.hidden{display:none!important}
-.login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 15% 15%,#3456a8 0,#1b2c62 35%,
-#0b1534 100%)}
-.login-card{background:var(--white);border:1px solid #ffffff55;border-radius:26px;padding:42px;width:min(440px,100%);box-shadow:0 28px 90px
-#0005;text-align:center}
-.logo{width:66px;height:66px;border-radius:21px;background:linear-gradient(145deg,#e9efff,#dce6ff);color:var(--blue);display:grid;placeitems:
-center;font-size:31px;font-weight:800;margin:0 auto 20px;box-shadow:inset 0 0 0 1px #d6e1ff}
-h1{font-size:29px;letter-spacing:-.8px;margin:0 0 9px;color:var(--navy)}
-.sub{color:var(--muted);line-height:1.6;margin:0}
-.google{margin-top:26px;width:100%;border:1px solid var(--line);background:white;border-radius:13px;padding:14px;font-weight:700;color:
-#26334d;box-shadow:0 3px 10px #1725540a}
-.google:hover{background:#f8faff;border-color:#cbd7f5}
-.hint{font-size:12px;color:var(--muted);margin-top:18px}
-.app{min-height:100vh;display:grid;grid-template-columns:258px minmax(0,1fr)}
-.sidebar{background:linear-gradient(180deg,var(--navy-2),var(--navy));color:white;padding:27px 17px 20px;display:flex;flex-direction:column;
-gap:30px;box-shadow:8px 0 30px #1725540a;position:relative;z-index:2}
-.brand{font-size:22px;font-weight:850;letter-spacing:-.7px;padding:0 11px;color:white}
-.brand small{display:block;color:#aebde4;font-size:10px;letter-spacing:1.5px;font-weight:700;margin-top:7px}
-.nav{display:grid;gap:7px}
-.nav button{border:0;background:transparent;color:#cbd6f2;text-align:left;padding:13px 14px;border-radius:12px;font-size:13px;font-weight:
-650;letter-spacing:.1px}
-.nav button.active,.nav button:hover{background:linear-gradient(90deg,#ffffff22,#ffffff10);color:white;box-shadow:inset 3px 0 0 #7da2ff}
-.userbox{margin-top:auto;border-top:1px solid #ffffff25;padding:17px 8px 0;font-size:12px;color:#dbe5ff;overflow-wrap:anywhere}
-.userbox button{margin-top:12px;background:#ffffff16;color:white;border:1px solid #ffffff20;border-radius:9px;padding:9px 13px;font-weight:
-650}
-.userbox button:hover{background:#ffffff26}
-main{padding:34px 38px;min-width:0;max-width:1600px;width:100%;margin:0 auto}
-.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:27px}
-.top h2{margin:0;font-size:28px;letter-spacing:-.8px;color:#172554}
-.top p{margin:7px 0 0;color:var(--muted);font-size:13px}
-.primary{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:white;border:0;border-radius:11px;padding:12px 17px;fontweight:
-750;box-shadow:0 7px 16px #315efb30}
-.primary:hover{box-shadow:0 10px 22px #315efb45;filter:brightness(1.04)}
-.secondary{background:white;border:1px solid var(--line);border-radius:10px;padding:10px 14px;color:#34415b;font-weight:650}
-.secondary:hover{background:#f8faff;border-color:#cbd7f5}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:22px}
-.stat,.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:var(--shadow)}
-.stat{position:relative;overflow:hidden}
-.stat:after{content:"";position:absolute;width:76px;height:76px;border-radius:50%;right:-24px;top:-25px;background:#eef3ff}
-.stat span{color:var(--muted);font-size:12px;font-weight:650;position:relative;z-index:1}
-.stat strong{display:block;font-size:29px;letter-spacing:-1px;margin-top:10px;color:var(--navy);position:relative;z-index:1}
-.panel h3{margin:0 0 16px;color:#1b2945;font-size:16px;letter-spacing:-.2px}
-.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
-.toolbar input,.toolbar select,.field input,.field select,.field textarea{border:1px solid #dfe5ef;border-radius:10px;padding:11px 12px;
-background:white;width:100%;outline:none;color:var(--ink)}
-.toolbar input:focus,.field input:focus,.field select:focus,.field textarea:focus{border-color:#8aa5ff;box-shadow:0 0 0 3px #315efb15}
-.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
-.calendar-head strong{color:var(--navy);text-transform:capitalize}
-.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
-.dow{text-align:center;color:var(--muted);font-size:11px;font-weight:750;padding:9px;text-transform:uppercase;letter-spacing:.4px}
-.day{background:#fff;border:1px solid var(--line);border-radius:11px;min-height:100px;padding:9px;overflow:hidden}
-.day.muted{opacity:.4;background:#fafbfe}
-.day.today{border:2px solid var(--blue);background:#f7f9ff}
-.daynum{font-size:12px;font-weight:800;color:#34415b}
-.event-chip{font-size:10px;background:#edf2ff;color:#2448bd;padding:5px 6px;border-radius:6px;margin-top:6px;overflow:hidden;text-overflow:
-ellipsis;white-space:nowrap;font-weight:650}
-.list{display:grid;gap:10px}
-.item{border:1px solid var(--line);border-radius:12px;padding:14px 15px;display:flex;justify-content:space-between;align-items:center;gap:
-12px;background:white}
-.item:hover{border-color:#cbd7f5;background:#fcfdff}
-.item strong{color:#1d2b48;font-size:13px}
-.item small{color:var(--muted);line-height:1.7}
-.empty{color:var(--muted);padding:28px;text-align:center;font-size:13px}
-.modal{position:fixed;inset:0;background:#0f172a99;display:grid;place-items:center;padding:16px;z-index:10;backdrop-filter:blur(4px)}
-.modal-card{background:white;border:1px solid #ffffff80;border-radius:20px;padding:25px;width:min(580px,100%);max-height:90vh;overflow:auto;
-box-shadow:0 24px 80px #0003}
-.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.modal-head h3{margin:0;color:var(--navy)}
-.modal-head button{border:0;background:#f2f5fb;border-radius:9px;width:34px;height:34px;font-size:22px;color:#52617c}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.field{display:grid;gap:7px}
-.field label{font-size:11px;color:#5c6b85;font-weight:750}
-.field.full{grid-column:1/-1}
-.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
-.notice{padding:13px;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:11px;font-size:13px;margin-bottom:16px}
-@media(max-width:1050px){main{padding:26px 22px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{padding:14px 13px;gap:13px}.brand{padding:4px 8px;font-size:20px}.nav{
-display:flex;overflow:auto;padding-bottom:3px}.nav button{white-space:nowrap;padding:10px 12px}.userbox{display:flex;align-items:center;justifycontent:
-space-between;gap:10px;padding-top:10px}.userbox button{margin:0}main{padding:20px}.day{min-height:78px;padding:6px}.event-chip{fontsize:
-9px}}
-@media(max-width:520px){.top{align-items:flex-start;flex-direction:column}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.
-stats{gap:9px}.stat{padding:14px}.stat strong{font-size:23px}.day{min-height:60px}.event-chip{display:none}.calendar{gap:3px}.panel{padding:
-14px}.login-card{padding:30px 23px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172554">
+  <meta name="description" content="JurisOne: gestão jurídica inteligente para escritórios de advocacia.">
+  <title>JurisOne | Gestão Jurídica</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <style>
+
+    :root{
+      --navy:#101b3d;--navy-2:#172554;--blue:#315efb;--blue-dark:#2448d8;
+      --bg:#f5f7fc;--line:#e7ebf3;--muted:#718096;--ink:#172033;
+      --white:#fff;--shadow:0 12px 32px rgba(23,37,84,.07)
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer;transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
+    button:active{transform:translateY(1px)}
+    .hidden{display:none!important}
+    .login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 15% 15%,#3456a8 0,#1b2c62 35%,#0b1534 100%)}
+    .login-card{background:var(--white);border:1px solid #ffffff55;border-radius:26px;padding:42px;width:min(440px,100%);box-shadow:0 28px 90px #0005;text-align:center}
+    .logo{width:66px;height:66px;border-radius:21px;background:linear-gradient(145deg,#e9efff,#dce6ff);color:var(--blue);display:grid;place-items:center;font-size:31px;font-weight:800;margin:0 auto 20px;box-shadow:inset 0 0 0 1px #d6e1ff}
+    h1{font-size:29px;letter-spacing:-.8px;margin:0 0 9px;color:var(--navy)}
+    .sub{color:var(--muted);line-height:1.6;margin:0}
+    .google{margin-top:26px;width:100%;border:1px solid var(--line);background:white;border-radius:13px;padding:14px;font-weight:700;color:#26334d;box-shadow:0 3px 10px #1725540a}
+    .google:hover{background:#f8faff;border-color:#cbd7f5}
+    .hint{font-size:12px;color:var(--muted);margin-top:18px}
+    .app{min-height:100vh;display:grid;grid-template-columns:258px minmax(0,1fr)}
+    .sidebar{background:linear-gradient(180deg,var(--navy-2),var(--navy));color:white;padding:27px 17px 20px;display:flex;flex-direction:column;gap:30px;box-shadow:8px 0 30px #1725540a;position:relative;z-index:2}
+    .brand{font-size:22px;font-weight:850;letter-spacing:-.7px;padding:0 11px;color:white}
+    .brand small{display:block;color:#aebde4;font-size:10px;letter-spacing:1.5px;font-weight:700;margin-top:7px}
+    .nav{display:grid;gap:7px}
+    .nav button{border:0;background:transparent;color:#cbd6f2;text-align:left;padding:13px 14px;border-radius:12px;font-size:13px;font-weight:650;letter-spacing:.1px}
+    .nav button.active,.nav button:hover{background:linear-gradient(90deg,#ffffff22,#ffffff10);color:white;box-shadow:inset 3px 0 0 #7da2ff}
+    .userbox{margin-top:auto;border-top:1px solid #ffffff25;padding:17px 8px 0;font-size:12px;color:#dbe5ff;overflow-wrap:anywhere}
+    .userbox button{margin-top:12px;background:#ffffff16;color:white;border:1px solid #ffffff20;border-radius:9px;padding:9px 13px;font-weight:650}
+    .userbox button:hover{background:#ffffff26}
+    main{padding:34px 38px;min-width:0;max-width:1600px;width:100%;margin:0 auto}
+    .top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:27px}
+    .top h2{margin:0;font-size:28px;letter-spacing:-.8px;color:#172554}
+    .top p{margin:7px 0 0;color:var(--muted);font-size:13px}
+    .primary{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:white;border:0;border-radius:11px;padding:12px 17px;font-weight:750;box-shadow:0 7px 16px #315efb30}
+    .primary:hover{box-shadow:0 10px 22px #315efb45;filter:brightness(1.04)}
+    .secondary{background:white;border:1px solid var(--line);border-radius:10px;padding:10px 14px;color:#34415b;font-weight:650}
+    .secondary:hover{background:#f8faff;border-color:#cbd7f5}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:22px}
+    .stat,.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:var(--shadow)}
+    .stat{position:relative;overflow:hidden}
+    .stat:after{content:"";position:absolute;width:76px;height:76px;border-radius:50%;right:-24px;top:-25px;background:#eef3ff}
+    .stat span{color:var(--muted);font-size:12px;font-weight:650;position:relative;z-index:1}
+    .stat strong{display:block;font-size:29px;letter-spacing:-1px;margin-top:10px;color:var(--navy);position:relative;z-index:1}
+    .panel h3{margin:0 0 16px;color:#1b2945;font-size:16px;letter-spacing:-.2px}
+    .toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+    .toolbar input,.toolbar select,.field input,.field select,.field textarea{border:1px solid #dfe5ef;border-radius:10px;padding:11px 12px;background:white;width:100%;outline:none;color:var(--ink)}
+    .toolbar input:focus,.field input:focus,.field select:focus,.field textarea:focus{border-color:#8aa5ff;box-shadow:0 0 0 3px #315efb15}
+    .calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+    .calendar-head strong{color:var(--navy);text-transform:capitalize}
+    .calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
+    .dow{text-align:center;color:var(--muted);font-size:11px;font-weight:750;padding:9px;text-transform:uppercase;letter-spacing:.4px}
+    .day{background:#fff;border:1px solid var(--line);border-radius:11px;min-height:100px;padding:9px;overflow:hidden}
+    .day.muted{opacity:.4;background:#fafbfe}
+    .day.today{border:2px solid var(--blue);background:#f7f9ff}
+    .daynum{font-size:12px;font-weight:800;color:#34415b}
+    .event-chip{font-size:10px;background:#edf2ff;color:#2448bd;padding:5px 6px;border-radius:6px;margin-top:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:650}
+    .list{display:grid;gap:10px}
+    .item{border:1px solid var(--line);border-radius:12px;padding:14px 15px;display:flex;justify-content:space-between;align-items:center;gap:12px;background:white}
+    .item:hover{border-color:#cbd7f5;background:#fcfdff}
+    .item strong{color:#1d2b48;font-size:13px}
+    .item small{color:var(--muted);line-height:1.7}
+    .empty{color:var(--muted);padding:28px;text-align:center;font-size:13px}
+    .modal{position:fixed;inset:0;background:#0f172a99;display:grid;place-items:center;padding:16px;z-index:10;backdrop-filter:blur(4px)}
+    .modal-card{background:white;border:1px solid #ffffff80;border-radius:20px;padding:25px;width:min(580px,100%);max-height:90vh;overflow:auto;box-shadow:0 24px 80px #0003}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .modal-head h3{margin:0;color:var(--navy)}
+    .modal-head button{border:0;background:#f2f5fb;border-radius:9px;width:34px;height:34px;font-size:22px;color:#52617c}
+    .formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+    .field{display:grid;gap:7px}
+    .field label{font-size:11px;color:#5c6b85;font-weight:750}
+    .field.full{grid-column:1/-1}
+    .actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
+    .notice{padding:13px;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:11px;font-size:13px;margin-bottom:16px}
+    @media(max-width:1050px){main{padding:26px 22px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{padding:14px 13px;gap:13px}.brand{padding:4px 8px;font-size:20px}.nav{display:flex;overflow:auto;padding-bottom:3px}.nav button{white-space:nowrap;padding:10px 12px}.userbox{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:10px}.userbox button{margin:0}main{padding:20px}.day{min-height:78px;padding:6px}.event-chip{font-size:9px}}
+    @media(max-width:520px){.top{align-items:flex-start;flex-direction:column}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.stats{gap:9px}.stat{padding:14px}.stat strong{font-size:23px}.day{min-height:60px}.event-chip{display:none}.calendar{gap:3px}.panel{padding:14px}.login-card{padding:30px 23px}}
+
+  </style>
 </head>
 <body>
-<section id="login" class="login-wrap">
-<div class="login-card">
-<div class="logo">n</div>
-<h1>JurisOne</h1>
-<p class="sub">Seu escritório organizado em um só lugar.<br>Entre com sua conta Google autorizada.</p>
-<button id="loginBtn" class="google">G nEntrar com Google</button>
-<p id="loginError" class="hint"></p>
-<p class="hint">O acesso é restrito aos e-mails autorizados pelo administrador.</p>
-</div>
-</section>
-<div id="app" class="app hidden">
-<aside class="sidebar">
-<div class="brand">JurisOne <small>GESTÃO JURÍDICA INTELIGENTE</small></div>
-<nav class="nav" id="nav">
-<button class="active" data-view="inicio">n Visão geral</button>
-<button data-view="agenda">n Agenda</button>
-<button data-view="clientes">n Clientes</button>
-<button data-view="audiencias">n Audiências</button>
-<button data-view="pagamentos">R$ Pagamentos</button>
-<button data-view="tarefas">n Tarefas</button>
-<button data-view="anotacoes">. Anotações</button>
-</nav>
-<div class="userbox"><span id="userEmail">Conectado</span><button id="logoutBtn">Sair</button></div>
-</aside>
-<main>
-<div class="top"><div><h2 id="pageTitle">Visão geral</h2><p id="pageSub">Acompanhe os compromissos do escritório.</p></div><button
-id="addBtn" class="primary">n Novo registro</button></div>
-<div id="content"></div>
-</main>
-</div>
-<div id="modal" class="modal hidden">
-<div class="modal-card">
-<div class="modal-head"><h3 id="modalTitle">Novo registro</h3><button id="closeModal" aria-label="Fechar">×</button></div>
-<form id="recordForm">
-<div id="formFields" class="formgrid"></div>
-<div class="actions"><button type="button" id="cancelModal" class="secondary">Cancelar</button><button class="primary"
-type="submit">Salvar</button></div>
-</form>
-</div>
-</div>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/13.4.0/
-firebase-auth.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, deleteDoc, doc } from "https://www.gstatic.com/
-firebasejs/13.4.0/firebase-firestore.js";
-// SUBSTITUA pelos dados do seu projeto Firebase (Console > Configurações > Seus apps > Web).
-const firebaseConfig = {
-apiKey: "AIzaSyAd1QZuyFPixDYw9Bd2CPLtJPlWbHnXX9w",
-authDomain: "nossa-agenda-6798a.firebaseapp.com",
-projectId: "nossa-agenda-6798a",
-storageBucket: "nossa-agenda-6798a.firebasestorage.app",
-messagingSenderId: "436772680405",
-appId: "1:436772680405:web:633e0bc36c4d628937a85c",
-measurementId: "G-STR0CSNVP8"
-};
-const loginEl = document.getElementById("login"), appEl = document.getElementById("app");
-const loginError = document.getElementById("loginError");
-let auth, db, currentUser, records = [], activeView = "inicio", month = new Date();
-const views = {
-inicio:["Visão geral","Resumo dos próximos compromissos."],
-agenda:["Agenda","Calendário compartilhado do escritório."],
-clientes:["Clientes","Cadastro e consulta de clientes."],
-audiencias:["Audiências","Controle de audiências e prazos."],
-pagamentos:["Pagamentos","Acompanhe valores e status."],
-tarefas:["Tarefas","Atividades que precisam de atenção."],
-anotacoes:["Anotações","Informações importantes do escritório."]
-};
-const fieldsByView = {
-agenda:[["title","Título","text",true],["date","Data","date",true],["time","Horário","time"],["category","Categoria","select",false,[
-"Compromisso","Reunião","Retorno","Prazo"]],["client","Cliente","text"],["notes","Anotações","textarea"]],
-clientes:[["title","Nome do cliente","text",true],["phone","Telefone","tel"],["email","E-mail","email"],["document","CPF/CNPJ","text"],[
-"notes","Observações","textarea"]],
-audiencias:[["title","Processo / audiência","text",true],["date","Data","date",true],["time","Horário","time"],["client","Cliente","text"],
-["location","Local / link","text"],["notes","Observações","textarea"]],
-pagamentos:[["title","Descrição","text",true],["date","Vencimento","date"],["value","Valor (R$)","number"],["status","Status","select",
-false,["Pendente","Pago","Atrasado"]],["client","Cliente","text"],["notes","Observações","textarea"]],
-tarefas:[["title","Tarefa","text",true],["date","Prazo","date"],["status","Status","select",false,["Pendente","Em andamento","Concluída"]],
-["notes","Detalhes","textarea"]],
-anotacoes:[["title","Título","text",true],["notes","Anotação","textarea",true]]
-};
-function initFirebase(){
-if(firebaseConfig.apiKey.startsWith("COLE_") || firebaseConfig.projectId==="SEU-PROJETO"){
-loginError.textContent="Configuração pendente: conecte o projeto Firebase para ativar o login e salvar os dados.";
-document.getElementById("loginBtn").disabled=true; return;
-}
-const fb=initializeApp(firebaseConfig); auth=getAuth(fb); db=getFirestore(fb);
-onAuthStateChanged(auth,user=>{
-if(user){currentUser=user;loginEl.classList.add("hidden");appEl.classList.remove("hidden");document.getElementById("userEmail").
-textContent=user.email||"Conectado";subscribe();}
-else{appEl.classList.add("hidden");loginEl.classList.remove("hidden");}
-});
-}
-document.getElementById("loginBtn").onclick=async()=>{
-try{await signInWithPopup(auth,new GoogleAuthProvider());}
-catch(e){loginError.textContent=e.code==="auth/unauthorized-domain"?"Domínio não autorizado no Firebase.":(e.message||"Não foi possível
-entrar.");}
-};
-document.getElementById("logoutBtn").onclick=()=>signOut(auth);
-function subscribe(){
-const q=query(collection(db,"agendaEvents"),orderBy("createdAt","desc"));
-onSnapshot(q,snap=>{records=snap.docs.map(d=>({id:d.id,...d.data()}));render();},e=>{document.getElementById("content").innerHTML=`<div
-class="notice">Não foi possível carregar os dados: ${escapeHtml(e.message)}</div>`;});
-}
-function escapeHtml(s=""){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function dateText(v){if(!v)return "Sem data";const d=new Date(v+"T12:00:00");return d.toLocaleDateString("pt-BR");}
-function money(v){return Number(v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});}
-function render(){
-const content=document.getElementById("content");
-const filtered=records.filter(r=>r.type===activeView || (activeView==="agenda" && ["agenda","audiencias"].includes(r.type)));
-if(activeView==="inicio"){
-const upcoming=records.filter(r=>r.date).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,6);
-const pending=records.filter(r=>r.type==="pagamentos"&&r.status!=="Pago");
-content.innerHTML=`<div class="stats"><div class="stat"><span>Clientes cadastrados</span><strong>${records.filter(r=>r.
-type==="clientes").length}</strong></div><div class="stat"><span>Próximos compromissos</span><strong>${records.filter(r=>["agenda","audiencias"].
-includes(r.type)).length}</strong></div><div class="stat"><span>Pagamentos pendentes</span><strong>${pending.length}</strong></div><div
-class="stat"><span>Tarefas abertas</span><strong>${records.filter(r=>r.type==="tarefas"&&r.status!=="Concluída").length}</strong></div></
-div><section class="panel"><h3>Próximos registros</h3>${renderList(upcoming)}</section>`;
-} else if(activeView==="agenda"){
-content.innerHTML=`<section class="panel"><div class="calendar-head"><button class="secondary" id="prevMonth">‹</button><strong>${month.
-toLocaleDateString("pt-BR",{month:"long",year:"numeric"})}</strong><button class="secondary" id="nextMonth">›</button></div><div id="calendar"></
-div></section><section class="panel" style="margin-top:16px"><h3>Compromissos e audiências</h3>${renderList(filtered.sort((a,b)=>(a.date||"").
-localeCompare(b.date||"")))}</section>`;
-drawCalendar();document.getElementById("prevMonth").onclick=()=>{month.setMonth(month.getMonth()-1);render()};document.getElementById(
-"nextMonth").onclick=()=>{month.setMonth(month.getMonth()+1);render()};
-} else content.innerHTML=`<section class="panel"><div class="toolbar"><input id="filter" placeholder="Buscar neste painel..."></div><div
-id="recordList">${renderList(filtered)}</div></section>`;
-const filter=document.getElementById("filter");if(filter)filter.oninput=()=>{document.getElementById("recordList").innerHTML=renderList(
-filtered.filter(r=>(r.title||"").toLowerCase().includes(filter.value.toLowerCase())||(r.client||"").toLowerCase().includes(filter.value.
-toLowerCase())))};
-}
-function renderList(items){
-if(!items.length)return `<div class="empty">Nenhum registro por enquanto.</div>`;
-return `<div class="list">${items.map(r=>`<div class="item"><div><strong>${escapeHtml(r.title||"Sem título")}</strong><br><small>${
-dateText(r.date)} ${r.time? " • "+escapeHtml(r.time):""} ${r.client?" • "+escapeHtml(r.client):""} ${r.status?" • "+escapeHtml(r.status):""}</
-small>${r.value?`<br><small>${money(r.value)}</small>`:""}${r.notes?`<br><small>${escapeHtml(r.notes)}</small>`:""}</div><button
-class="secondary" data-delete="${r.id}" title="Excluir">Excluir</button></div>`).join("")}</div>`;
-}
-function drawCalendar(){
-const el=document.getElementById("calendar"),year=month.getFullYear(),m=month.getMonth(),first=new Date(year,m,1),start=(first.getDay(
-)+6)%7,days=new Date(year,m+1,0).getDate(),prevDays=new Date(year,m,0).getDate();
-const names=["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"];let html=names.map(n=>`<div class="dow">${n}</div>`).join("");
-for(let i=0;i<42;i++){let n=i-start+1,cur=n>0&&n<=days,day=cur?n:n<=0?prevDays+n:n-days,dt=new Date(year,m+(n<=0?-1:n>days?1:0),day),
-key=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,"0")}-${String(dt.getDate()).padStart(2,"0")}`,events=records.filter(r=>r.
-date===key&&["agenda","audiencias"].includes(r.type));html+=`<div class="day ${cur?"":"muted"} ${key===new Date().toISOString().slice(0,
-10)?"today":""}"><div class="daynum">${day}</div>${events.slice(0,2).map(e=>`<div class="event-chip">${escapeHtml(e.title)}</div>`).join("")}</
-div>`;}
-el.innerHTML=`<div class="calendar">${html}</div>`;
-}
-function openModal(){
-const type=activeView==="inicio"?"agenda":activeView, defs=fieldsByView[type]||fieldsByView.agenda;
-document.getElementById("modalTitle").textContent="Novo registro";
-document.getElementById("formFields").innerHTML=`<input type="hidden" name="type" value="${type}">`+defs.map(([name,label,kind,required,
-opts])=>`<div class="field ${kind==="textarea"?"full":""}"><label>${label}</label>${kind==="select"?`<select name="${name}">${opts.map(
-o=>`<option>${o}</option>`).join("")}</select>`:kind==="textarea"?`<textarea name="${name}" rows="3" ${required?"required":""}></textarea>`:
-`<input name="${name}" type="${kind}" ${required?"required":""} ${kind==="number"?'step="0.01" min="0"':""}>`}</div>`).join("");
-document.getElementById("modal").classList.remove("hidden");
-}
-function closeModal(){document.getElementById("modal").classList.add("hidden")}
-document.getElementById("addBtn").onclick=openModal;document.getElementById("closeModal").onclick=closeModal;document.getElementById(
-"cancelModal").onclick=closeModal;
-document.getElementById("recordForm").onsubmit=async e=>{
-e.preventDefault();const data=Object.fromEntries(new FormData(e.target).entries());data.type=data.type||activeView;data.
-createdBy=currentUser.email;data.createdAt=serverTimestamp();
-try{await addDoc(collection(db,"agendaEvents"),data);closeModal();e.target.reset();}
-catch(err){alert("Não foi possível salvar: "+err.message);}
-};
-document.getElementById("content").addEventListener("click",async e=>{const id=e.target.dataset.delete;if(id&&confirm("Excluir este
-registro?"))await deleteDoc(doc(db,"agendaEvents",id));});
-document.getElementById("nav").onclick=e=>{const b=e.target.closest("button[data-view]");if(!b)return;activeView=b.dataset.view;document.
-querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x===b));document.getElementById("pageTitle").textContent=views[
-activeView][0];document.getElementById("pageSub").textContent=views[activeView][1];document.getElementById("addBtn").classList.toggle("hidden",
-activeView==="inicio"?false:false);render();};
-if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
-initFirebase();
-</script>
+  <section id="login" class="login-wrap">
+    <div class="login-card">
+      <div class="logo">▦</div>
+      <h1>JurisOne</h1>
+      <p class="sub">Seu escritório organizado em um só lugar.<br>Entre com sua conta Google autorizada.</p>
+      <button id="loginBtn" class="google">G 　Entrar com Google</button>
+      <p id="loginError" class="hint"></p>
+      <p class="hint">O acesso é restrito aos e-mails autorizados pelo administrador.</p>
+    </div>
+  </section>
+
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="brand">JurisOne <small>GESTÃO JURÍDICA INTELIGENTE</small></div>
+      <nav class="nav" id="nav">
+        <button class="active" data-view="inicio">▦ Visão geral</button>
+        <button data-view="agenda">▣ Agenda</button>
+        <button data-view="clientes">♙ Clientes</button>
+        <button data-view="audiencias">⚖ Audiências</button>
+        <button data-view="pagamentos">R$ Pagamentos</button>
+        <button data-view="tarefas">☑ Tarefas</button>
+        <button data-view="anotacoes">✎ Anotações</button>
+      </nav>
+      <div class="userbox"><span id="userEmail">Conectado</span><button id="logoutBtn">Sair</button></div>
+    </aside>
+    <main>
+      <div class="top"><div><h2 id="pageTitle">Visão geral</h2><p id="pageSub">Acompanhe os compromissos do escritório.</p></div><button id="addBtn" class="primary">＋ Novo registro</button></div>
+      <div id="content"></div>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head"><h3 id="modalTitle">Novo registro</h3><button id="closeModal" aria-label="Fechar">×</button></div>
+      <form id="recordForm">
+        <div id="formFields" class="formgrid"></div>
+        <div class="actions"><button type="button" id="cancelModal" class="secondary">Cancelar</button><button class="primary" type="submit">Salvar</button></div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
+
+    // SUBSTITUA pelos dados do seu projeto Firebase (Console > Configurações > Seus apps > Web).
+    const firebaseConfig = {
+      apiKey: "AIzaSyAd1QZuyFPixDYw9Bd2CPLtJPlWbHnXX9w",
+      authDomain: "nossa-agenda-6798a.firebaseapp.com",
+      projectId: "nossa-agenda-6798a",
+      storageBucket: "nossa-agenda-6798a.firebasestorage.app",
+      messagingSenderId: "436772680405",
+      appId: "1:436772680405:web:633e0bc36c4d628937a85c",
+      measurementId: "G-STR0CSNVP8"
+    };
+
+    const loginEl = document.getElementById("login"), appEl = document.getElementById("app");
+    const loginError = document.getElementById("loginError");
+    let auth, db, currentUser, records = [], activeView = "inicio", month = new Date();
+    const views = {
+      inicio:["Visão geral","Resumo dos próximos compromissos."],
+      agenda:["Agenda","Calendário compartilhado do escritório."],
+      clientes:["Clientes","Cadastro e consulta de clientes."],
+      audiencias:["Audiências","Controle de audiências e prazos."],
+      pagamentos:["Pagamentos","Acompanhe valores e status."],
+      tarefas:["Tarefas","Atividades que precisam de atenção."],
+      anotacoes:["Anotações","Informações importantes do escritório."]
+    };
+    const fieldsByView = {
+      agenda:[["title","Título","text",true],["date","Data","date",true],["time","Horário","time"],["category","Categoria","select",false,["Compromisso","Reunião","Retorno","Prazo"]],["client","Cliente","text"],["notes","Anotações","textarea"]],
+      clientes:[["title","Nome do cliente","text",true],["phone","Telefone","tel"],["email","E-mail","email"],["document","CPF/CNPJ","text"],["notes","Observações","textarea"]],
+      audiencias:[["title","Processo / audiência","text",true],["date","Data","date",true],["time","Horário","time"],["client","Cliente","text"],["location","Local / link","text"],["notes","Observações","textarea"]],
+      pagamentos:[["title","Descrição","text",true],["date","Vencimento","date"],["value","Valor (R$)","number"],["status","Status","select",false,["Pendente","Pago","Atrasado"]],["client","Cliente","text"],["notes","Observações","textarea"]],
+      tarefas:[["title","Tarefa","text",true],["date","Prazo","date"],["status","Status","select",false,["Pendente","Em andamento","Concluída"]],["notes","Detalhes","textarea"]],
+      anotacoes:[["title","Título","text",true],["notes","Anotação","textarea",true]]
+    };
+    function initFirebase(){
+      if(firebaseConfig.apiKey.startsWith("COLE_") || firebaseConfig.projectId==="SEU-PROJETO"){
+        loginError.textContent="Configuração pendente: conecte o projeto Firebase para ativar o login e salvar os dados.";
+        document.getElementById("loginBtn").disabled=true; return;
+      }
+      const fb=initializeApp(firebaseConfig); auth=getAuth(fb); db=getFirestore(fb);
+      onAuthStateChanged(auth,user=>{
+        if(user){currentUser=user;loginEl.classList.add("hidden");appEl.classList.remove("hidden");document.getElementById("userEmail").textContent=user.email||"Conectado";subscribe();}
+        else{appEl.classList.add("hidden");loginEl.classList.remove("hidden");}
+      });
+    }
+    document.getElementById("loginBtn").onclick=async()=>{
+      try{await signInWithPopup(auth,new GoogleAuthProvider());}
+      catch(e){loginError.textContent=e.code==="auth/unauthorized-domain"?"Domínio não autorizado no Firebase.":(e.message||"Não foi possível entrar.");}
+    };
+    document.getElementById("logoutBtn").onclick=()=>signOut(auth);
+    function subscribe(){
+      const q=query(collection(db,"agendaEvents"),orderBy("createdAt","desc"));
+      onSnapshot(q,snap=>{records=snap.docs.map(d=>({id:d.id,...d.data()}));render();},e=>{document.getElementById("content").innerHTML=`<div class="notice">Não foi possível carregar os dados: ${escapeHtml(e.message)}</div>`;});
+    }
+    function escapeHtml(s=""){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+    function dateText(v){if(!v)return "Sem data";const d=new Date(v+"T12:00:00");return d.toLocaleDateString("pt-BR");}
+    function money(v){return Number(v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});}
+    function render(){
+      const content=document.getElementById("content");
+      const filtered=records.filter(r=>r.type===activeView || (activeView==="agenda" && ["agenda","audiencias"].includes(r.type)));
+      if(activeView==="inicio"){
+        const upcoming=records.filter(r=>r.date).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,6);
+        const pending=records.filter(r=>r.type==="pagamentos"&&r.status!=="Pago");
+        content.innerHTML=`<div class="stats"><div class="stat"><span>Clientes cadastrados</span><strong>${records.filter(r=>r.type==="clientes").length}</strong></div><div class="stat"><span>Próximos compromissos</span><strong>${records.filter(r=>["agenda","audiencias"].includes(r.type)).length}</strong></div><div class="stat"><span>Pagamentos pendentes</span><strong>${pending.length}</strong></div><div class="stat"><span>Tarefas abertas</span><strong>${records.filter(r=>r.type==="tarefas"&&r.status!=="Concluída").length}</strong></div></div><section class="panel"><h3>Próximos registros</h3>${renderList(upcoming)}</section>`;
+      } else if(activeView==="agenda"){
+        content.innerHTML=`<section class="panel"><div class="calendar-head"><button class="secondary" id="prevMonth">‹</button><strong>${month.toLocaleDateString("pt-BR",{month:"long",year:"numeric"})}</strong><button class="secondary" id="nextMonth">›</button></div><div id="calendar"></div></section><section class="panel" style="margin-top:16px"><h3>Compromissos e audiências</h3>${renderList(filtered.sort((a,b)=>(a.date||"").localeCompare(b.date||"")))}</section>`;
+        drawCalendar();document.getElementById("prevMonth").onclick=()=>{month.setMonth(month.getMonth()-1);render()};document.getElementById("nextMonth").onclick=()=>{month.setMonth(month.getMonth()+1);render()};
+      } else content.innerHTML=`<section class="panel"><div class="toolbar"><input id="filter" placeholder="Buscar neste painel..."></div><div id="recordList">${renderList(filtered)}</div></section>`;
+      const filter=document.getElementById("filter");if(filter)filter.oninput=()=>{document.getElementById("recordList").innerHTML=renderList(filtered.filter(r=>(r.title||"").toLowerCase().includes(filter.value.toLowerCase())||(r.client||"").toLowerCase().includes(filter.value.toLowerCase())))};
+    }
+    function renderList(items){
+      if(!items.length)return `<div class="empty">Nenhum registro por enquanto.</div>`;
+      return `<div class="list">${items.map(r=>`<div class="item"><div><strong>${escapeHtml(r.title||"Sem título")}</strong><br><small>${dateText(r.date)} ${r.time? " • "+escapeHtml(r.time):""} ${r.client?" • "+escapeHtml(r.client):""} ${r.status?" • "+escapeHtml(r.status):""}</small>${r.value?`<br><small>${money(r.value)}</small>`:""}${r.notes?`<br><small>${escapeHtml(r.notes)}</small>`:""}</div><button class="secondary" data-delete="${r.id}" title="Excluir">Excluir</button></div>`).join("")}</div>`;
+    }
+    function drawCalendar(){
+      const el=document.getElementById("calendar"),year=month.getFullYear(),m=month.getMonth(),first=new Date(year,m,1),start=(first.getDay()+6)%7,days=new Date(year,m+1,0).getDate(),prevDays=new Date(year,m,0).getDate();
+      const names=["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"];let html=names.map(n=>`<div class="dow">${n}</div>`).join("");
+      for(let i=0;i<42;i++){let n=i-start+1,cur=n>0&&n<=days,day=cur?n:n<=0?prevDays+n:n-days,dt=new Date(year,m+(n<=0?-1:n>days?1:0),day),key=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,"0")}-${String(dt.getDate()).padStart(2,"0")}`,events=records.filter(r=>r.date===key&&["agenda","audiencias"].includes(r.type));html+=`<div class="day ${cur?"":"muted"} ${key===new Date().toISOString().slice(0,10)?"today":""}"><div class="daynum">${day}</div>${events.slice(0,2).map(e=>`<div class="event-chip">${escapeHtml(e.title)}</div>`).join("")}</div>`;}
+      el.innerHTML=`<div class="calendar">${html}</div>`;
+    }
+    function openModal(){
+      const type=activeView==="inicio"?"agenda":activeView, defs=fieldsByView[type]||fieldsByView.agenda;
+      document.getElementById("modalTitle").textContent="Novo registro";
+      document.getElementById("formFields").innerHTML=`<input type="hidden" name="type" value="${type}">`+defs.map(([name,label,kind,required,opts])=>`<div class="field ${kind==="textarea"?"full":""}"><label>${label}</label>${kind==="select"?`<select name="${name}">${opts.map(o=>`<option>${o}</option>`).join("")}</select>`:kind==="textarea"?`<textarea name="${name}" rows="3" ${required?"required":""}></textarea>`:`<input name="${name}" type="${kind}" ${required?"required":""} ${kind==="number"?'step="0.01" min="0"':""}>`}</div>`).join("");
+      document.getElementById("modal").classList.remove("hidden");
+    }
+    function closeModal(){document.getElementById("modal").classList.add("hidden")}
+    document.getElementById("addBtn").onclick=openModal;document.getElementById("closeModal").onclick=closeModal;document.getElementById("cancelModal").onclick=closeModal;
+    document.getElementById("recordForm").onsubmit=async e=>{
+      e.preventDefault();const data=Object.fromEntries(new FormData(e.target).entries());data.type=data.type||activeView;data.createdBy=currentUser.email;data.createdAt=serverTimestamp();
+      try{await addDoc(collection(db,"agendaEvents"),data);closeModal();e.target.reset();}
+      catch(err){alert("Não foi possível salvar: "+err.message);}
+    };
+    document.getElementById("content").addEventListener("click",async e=>{const id=e.target.dataset.delete;if(id&&confirm("Excluir este registro?"))await deleteDoc(doc(db,"agendaEvents",id));});
+    document.getElementById("nav").onclick=e=>{const b=e.target.closest("button[data-view]");if(!b)return;activeView=b.dataset.view;document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x===b));document.getElementById("pageTitle").textContent=views[activeView][0];document.getElementById("pageSub").textContent=views[activeView][1];document.getElementById("addBtn").classList.toggle("hidden",activeView==="inicio"?false:false);render();};
+    if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+    initFirebase();
+  </script>
 </body>
 </html>
